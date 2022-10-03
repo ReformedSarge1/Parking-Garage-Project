@@ -24,6 +24,7 @@ class ParkingGarage():
                     self.tix_space_paid.append(False)
                     self.currentTicket = {random_space:self.tix_space_paid}
                     print(f'Here is your ticket. Please park in space {random_space}.')
+                    print(self.currentTicket)
                     return
             elif welcome == 'n':
                 print('Thanks for considering parking in our lot. Have a great day!')
