@@ -10,8 +10,15 @@ class ParkingGarage():
         self.rate = 5.0
         self.paid = False
 
+    def dataOption(self):
+        print(f'self.tickets - {self.tickets}')
+        print(f'self.parkingSpaces - {self.parkingSpaces}')
+        print(f'self.takenSpaces - {self.takenSpaces}')
+        print(f'self.currentTicket - {self.currentTicket}')
+
     def takeTicket(self):
         os.system('cls')
+        pg.dataOption()
         print('Welcome to the CartBo Parking Lot.')
         if len(self.parkingSpaces) == 0:
             print('I am sorry, the parking lot is full. There are no spaces left at the moment. Please come again another time.')
@@ -25,6 +32,7 @@ class ParkingGarage():
 
     def payForParking(self):
         os.system('cls')
+        pg.dataOption()
         pay = input('Would you like to pay for your parking? \'y\' or \'n\'\n')
         if pay == 'y':
             ticket_number = input('What is your ticket number?\n')
@@ -39,6 +47,7 @@ class ParkingGarage():
                 if insert_cc == '':
                     self.currentTicket[int(ticket_number)] = True                         # Self.paid changed to True. 
                     print("Thank you for paying, you have 15 minutes to leave.")
+                    pg.dataOption()
         elif pay == 'n':
             print('Please come back when you\'re ready to pay.')
         else:
@@ -46,6 +55,7 @@ class ParkingGarage():
 
     def leaveGarage(self):
         os.system('cls')
+        pg.dataOption()
         ticket_number = input('I need your ticket number before you can leave CartBo Parking.\nWhat is your ticket number?\n')
         print()
         if ticket_number not in str(range(0,1000000000)):
@@ -61,6 +71,7 @@ class ParkingGarage():
                     self.tickets.append(max(self.takenSpaces, key=self.takenSpaces.get) + 1)  # taking into account that if all spaces are full, the 
                 else:                                                                         # self.tickets dictionary gets appended with the max key of
                     self.tickets.append(max(self.tickets) + 1)                                # self.takenSpaces
+                    pg.dataOption()
             elif self.currentTicket[int(ticket_number)] == False:
                 pay_now = input('You have not paid for parking.\nType \'y\' to pay now or \'n\' to pay later.\n')
                 if pay_now == 'y':
@@ -74,36 +85,21 @@ class ParkingGarage():
 ### ----------------------------- Test Cases ----------------------------- ###
 
 pg = ParkingGarage()
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
-pg.takeTicket()
-wait = input("Press Enter to continue.")
+pg.takeTicket(); input("Press Enter to continue.")
+pg.takeTicket(); input("Press Enter to continue.")
+pg.leaveGarage(); input("Press Enter to continue.")
+pg.takeTicket(); input("Press Enter to continue.")
+pg.takeTicket(); input("Press Enter to continue.")
+pg.takeTicket(); input("Press Enter to continue.")
 
-pg.payForParking()
-wait = input("Press Enter to continue.")
-pg.payForParking()
-wait = input("Press Enter to continue.")
-pg.payForParking()
-wait = input("Press Enter to continue.")
+test_data = [1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3]
 
-pg.leaveGarage()
-wait = input("Press Enter to continue.")
-pg.leaveGarage()
-wait = input("Press Enter to continue.")
-pg.leaveGarage()
+results = random.shuffle(test_data)
+
+for t_data in test_data:
+    if t_data == 1:
+        pg.takeTicket(); input("Press Enter to continue.")
+    elif t_data == 2:
+        pg.payForParking(); input("Press Enter to continue.")
+    else:
+        pg.leaveGarage(); input("Press Enter to continue.")
