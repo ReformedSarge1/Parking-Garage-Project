@@ -17,10 +17,10 @@ class ParkingGarage():
             print('I am sorry, the parking lot is full. There are no spaces left at the moment. Please come again another time.')
         else:
             print('Please take a ticket.')
-            takenSpace = self.parkingSpaces.pop(0)               #pops out a space number from the parkingSpaces list and puts it into currentTicket and takenSpaces
-            ticket_number = self.tickets.pop(0)                    #pops out a ticket space from self.tickets list.
-            self.takenSpaces[ticket_number] = takenSpace
-            self.currentTicket[ticket_number] = self.paid
+            takenSpace = self.parkingSpaces.pop(0)               # pops out a space number from the parkingSpaces list and puts it into takenSpaces
+            ticket_number = self.tickets.pop(0)                    # pops out a ticket number from self.tickets list.
+            self.takenSpaces[ticket_number] = takenSpace           # self.takenSpaces is a dictionary with the ticket_number as the key and the space number (takenSpace) as the value
+            self.currentTicket[ticket_number] = self.paid          # self.currentTicket is a dictionary with the ticket_number as the key and True/False Boolean (self.paid) as the value
             print(f'Your rate is $5 an hour.\nPlease park in space {takenSpace}.')
 
     def payForParking(self):
@@ -93,7 +93,7 @@ wait = input("Press Enter to continue.")
 pg.takeTicket()
 wait = input("Press Enter to continue.")
 pg.takeTicket()
-wait = input("Press Enter to continue.")                  #Once you execute this last portion it will move onto payForParking
+wait = input("Press Enter to continue.")                  # Once you execute this last portion it will move onto payForParking
 
 pg.payForParking()
 wait = input("Press Enter to continue.")

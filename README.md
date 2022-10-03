@@ -54,4 +54,7 @@ When the project is completed, commit the final changes, sync all pull requests,
 
 Carter 1st commit - All lines up to that point
 Bo 1st commit - all of the takeTicket
-Carter 2nd commit - All of the payForParking
+Carter 2nd commit - All of the payForParking, some leaveGarage
+Bo 2nd commit - some leaveGarage, testing
+Carter Annotate
+Bo Annotate
